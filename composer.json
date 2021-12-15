@@ -1,0 +1,7 @@
+{
+  "require": {
+       "ext-soap": "*",
+       "ext-openssl": "*",
+       "php": "^7.4.*"
+  }
+}
