@@ -1,7 +1,5 @@
 {
   "require": {
-       "ext-soap": "*",
-       "ext-openssl": "*",
-       "php": "^7.4.*"
+    "php": "^7.4.0"
   }
 }
