@@ -1,9 +1,9 @@
 <?php
 
     $rota = $_GET['url'] ?? 'auth';
-    //echo __DIR__;
+    echo __DIR__;
     //var_dump($rota);
-    require_once(__DIR__ . '/source/Models/AuthTokenJWT.php');
+    /*require_once(__DIR__ . '/source/Models/AuthTokenJWT.php');
     require_once(__DIR__ . '/source/Models/UUID.php');
     require_once(__DIR__ . '/source/Models/readFile.php');
     require_once(__DIR__ . '/source/Models/Array2XML.php');
@@ -138,4 +138,4 @@
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($response);
     }
-
+*/
