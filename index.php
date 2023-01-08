@@ -1,12 +1,12 @@
 <?php
 
     $rota = $_GET['url'] ?? 'auth';
-    echo __DIR__;
-    var_dump($rota);
-    require_once(__DIR__ . '/source/Models/AuthTokenJWT.php');
-    require_once(__DIR__ . '/source/Models/UUID.php');
-    require_once(__DIR__ . '/source/Models/readFile.php');
-    require_once(__DIR__ . '/source/Models/Array2XML.php');
+    //echo __DIR__;
+    //var_dump($rota);
+    include(__DIR__ . '/source/Models/AuthTokenJWT.php');
+    //require_once(__DIR__ . '/source/Models/UUID.php');
+    //require_once(__DIR__ . '/source/Models/readFile.php');
+    //require_once(__DIR__ . '/source/Models/Array2XML.php');
  
     require_once(__DIR__ . "/source/Controllers/auth.php");
     $response = auth();
