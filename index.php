@@ -9,7 +9,7 @@
     require_once(__DIR__ . '/source/Models/Array2XML.php');
  
     if($rota == 'auth'){
-            require_once(__DIR__ . "/source/Controllers/{$rota}.php");
+            require_once(__DIR__ . "/source/Controllers/auth.php");
             $response = auth();
 
             if(isset($response)){
@@ -23,7 +23,7 @@
                 echo json_encode(array("status"=>"unauthorized"));
             }
         }else if($rota === 'check-jwt'){
-            require_once(__DIR__ . "/source/Controllers/{$rota}.php");
+            require_once(__DIR__ . "/source/Controllers/check-token.php");
             $headers=getallheaders();
             $response = checkAuth($headers['Authorization']);
 
