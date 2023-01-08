@@ -7,7 +7,43 @@
     require_once(__DIR__ . '/source/Models/UUID.php');
     require_once(__DIR__ . '/source/Models/readFile.php');
     require_once(__DIR__ . '/source/Models/Array2XML.php');
- /*
+ 
+    if($rota == 'auth'){
+            require_once(__DIR__ . "/source/Controllers/{$rota}.php");
+            $response = auth();
+
+            if(isset($response)){
+                http_response_code(200);
+                header('Content-Type: application/json; charset=utf-8');
+                header("Authorization: Bearer $response");
+                echo json_encode(array("status"=>"logged"));
+            }else{
+                http_response_code(401);
+                header('Content-Type: application/json; charset=utf-8');
+                echo json_encode(array("status"=>"unauthorized"));
+            }
+        }else if($rota === 'check-jwt'){
+            require_once(__DIR__ . "/source/Controllers/{$rota}.php");
+            $headers=getallheaders();
+            $response = checkAuth($headers['Authorization']);
+
+            if($response){
+                if($response === 'expired'){
+                    http_response_code(401);
+                    header('Content-Type: application/json; charset=utf-8');
+                    echo json_encode(array("status"=>"token expired"));
+                }else{
+                    http_response_code(200);
+                    header('Content-Type: application/json; charset=utf-8');
+                    echo json_encode(array("status"=>"authorized"));
+                }
+            }else{
+                http_response_code(401);
+                header('Content-Type: application/json; charset=utf-8');
+                echo json_encode(array("status"=>"unauthorized"));
+            }
+    }
+/*
     if(file_exists(__DIR__ . "/source/Controllers/{$rota}.php")){
         if($rota == 'auth'){
             require_once(__DIR__ . "/source/Controllers/{$rota}.php");
