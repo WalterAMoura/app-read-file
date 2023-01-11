@@ -1,26 +1,17 @@
 <?php
-    //header('Content-Type: application/text; charset=utf-8');
-    require_once('/storage/ssd3/766/17371766/public_html/source/Models/readFile.php');
+    
+    use Source\Models\readFile as ModelsReadFile;
+    use Source\Models\AuthTokenJWT as ModelsAuthTokenJWT;
+    use Source\Models\UUID as ModelsUUID;
+    use Source\Models\array2xml as ModelsArray2Xml;
 
-
-   /*
-    $fileRead = $_FILES['fileRead'];
-    $fileTemplate = $_FILES['fileTemplate'];
-    $lengthTemplate = $_POST['lengthTemplate'] ?? 1;
-    $delimiter= $_POST['delimiter'] ?? ",";
-    $offset = $_POST['offset'] ?? 0;
-    $parse = $_POST['parse'] ?? "txt";
-    $response = array();
-    $array = array();
-*/
     function read($fileRead, $fileTemplate,  $lengthTemplate, $delimiter, $offset, $parse){
-        $readFile = new \readFile();
+        $readFile = new ModelsReadFile();
 
         $response = array();
         $array = array();
 
         $data = $readFile->parse_csv_file(__DIR__ . '/' . $fileTemplate, $delimiter);
-
         $readFile->write_ini_file($data, __DIR__ . '/templates.ini', true);
 
         define("template", parse_ini_file(__DIR__ . '/templates.ini', true));

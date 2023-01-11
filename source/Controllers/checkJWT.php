@@ -1,6 +1,7 @@
 <?php
 
-    require_once('/storage/ssd3/766/17371766/public_html/source/Models/AuthTokenJWT.php');
+    //require_once('/storage/ssd3/766/17371766/public_html/source/Models/AuthTokenJWT.php');
+    require_once('../Models/AuthTokenJWT.php');
 
     $authTokenJWT = new \AuthTokenJWT();
 

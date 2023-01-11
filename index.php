@@ -1,27 +1,19 @@
 <?php
 
-    $rota = $_GET['url'] ?? 'auth';
+    //$rota = $_GET['url'] ?? 'auth';
+    $rota = $_GET['url'];
     //echo __DIR__;
     //var_dump($rota);
-    include(__DIR__ . '/source/Models/AuthTokenJWT.php');
-    //require_once(__DIR__ . '/source/Models/UUID.php');
-    //require_once(__DIR__ . '/source/Models/readFile.php');
-    //require_once(__DIR__ . '/source/Models/Array2XML.php');
- 
-    require_once(__DIR__ . "/source/Controllers/auth.php");
-    $response = auth();
+    use Source\Models\AuthTokenJWT as ModelsAuthTokenJWT;
+    //use Source\Models\UUID as ModelsUUID;
+    //use Source\Models\readFile as ModelsReadFile;
+    //use Source\Models\array2xml as ModelsArray2Xml;
 
-    if(isset($response)){
-        http_response_code(200);
-        header('Content-Type: application/json; charset=utf-8');
-        header("Authorization: Bearer $response");
-        echo json_encode(array("status"=>"logged"));
-    }else{
-        http_response_code(401);
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(array("status"=>"unauthorized"));
-    }
-/*
+    require_once(__DIR__ . '/source/Models/AuthTokenJWT.php');
+    require_once(__DIR__ . '/source/Models/UUID.php');
+    require_once(__DIR__ . '/source/Models/readFile.php');
+    require_once(__DIR__ . '/source/Models/Array2XML.php');
+
     if(file_exists(__DIR__ . "/source/Controllers/{$rota}.php")){
         if($rota == 'auth'){
             require_once(__DIR__ . "/source/Controllers/{$rota}.php");
@@ -41,7 +33,6 @@
             require_once(__DIR__ . "/source/Controllers/{$rota}.php");
             $headers=getallheaders();
             $response = checkAuth($headers['Authorization']);
-
             if($response){
                 if($response === 'expired'){
                     http_response_code(401);
@@ -62,14 +53,14 @@
             require_once(__DIR__ . "/source/Controllers/{$rota}.php");
             $headers=getallheaders();
 
-            $return = AuthTokenJWT::checkAuth($headers['Authorization']);
-
+            $return = ModelsAuthTokenJWT::checkAuth($headers['Authorization']);
             if($return){
                 if($return === 'expired'){
                     http_response_code(401);
                     header('Content-Type: application/json; charset=utf-8');
                     echo json_encode(array("status"=>"token expired"));
                 }else{
+                    echo $_FILES['fileRead'];
                     $fileRead = $_FILES['fileRead'] ?? -1;
                     $fileTemplate = $_FILES['fileTemplate'] ?? -1;
                     $lengthTemplate = $_POST['lengthTemplate'] ?? 1;
@@ -152,4 +143,4 @@
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($response);
     }
-*/
+

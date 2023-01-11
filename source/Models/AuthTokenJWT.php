@@ -1,15 +1,15 @@
 <?php
 
-//namespace Source\Models;
-
+namespace Source\Models;
+use Source\Models\UUID as ModelsUUID;
 
 
 class AuthTokenJWT{
     public function login(){
 
-       require_once(__DIR__ . '/UUID.php');
+       //require_once(__DIR__ . '/UUID.php');
 
-        $uuid = new \UUID();
+        $uuid = new ModelsUUID();
         $iss = $uuid->getGUID();
 
         //Application Key

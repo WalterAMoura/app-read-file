@@ -1,5 +1,7 @@
 <?php
 
+namespace Source\Models;
+
 class readFile
 {
     public function write_ini_file($assoc_arr, $path, $has_sections=FALSE): bool
@@ -50,7 +52,7 @@ class readFile
         $csv = Array();
         $rowcount = 0;
         if (($handle = fopen($csvfile, "r")) !== FALSE) {
-            $max_line_length = defined('MAX_LINE_LENGTH') ? MAX_LINE_LENGTH : 10000;
+            $max_line_length = defined('MAX_LINE_LENGTH') ? : 10000;
             $header = fgetcsv($handle, $max_line_length,$delimiter);
             $header_colcount = count($header);
             while (($row = fgetcsv($handle, $max_line_length,$delimiter)) !== FALSE) {
